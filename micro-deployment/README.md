@@ -29,8 +29,8 @@ The stack exposes several variables that can be configured. By default the stack
 Now, you'll want a local copy of this repo. You can make that with the commands:
 
 ```
-    git clone https://github.com/oracle-quickstart/oci-arch-theia-mds.git
-    cd oci-arch-theia-mds
+    git clone https://github.com/oracle-quickstart/oci-arch-jenkins.git
+    cd oci-arch-jenkins
     ls
 ```
 
@@ -63,10 +63,9 @@ Run the following commands:
 
 
 ### Testing your Deployment
-After the deployment is finished, you can access WP-Admin by picking theia_wp-admin_url output and pasting into web browser window. You can also verify initial content of your blog by using jenkins_public_ip:
+After the deployment is finished, you can access Jenkins by picking jenkins_public_ip output and pasting into web browser window.
 
 ````
-theia_wp-admin_url = http://193.122.198.19/wp-admin/
 jenkins_public_ip = 193.122.198.19
 `````
 
@@ -74,9 +73,3 @@ jenkins_public_ip = 193.122.198.19
 When you no longer need the deployment, you can run this command to destroy the resources:
 
     terraform destroy
-
-## Architecture Diagram
-
-![](./images/architecture-deploy-theia-mds.png)
-
-
