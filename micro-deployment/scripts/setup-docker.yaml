@@ -11,9 +11,9 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
 
 packages:
+ - docker-cli
  - docker-engine
  - docker-compose
-
 
 runcmd:
   - [ systemctl, daemon-reload ]

@@ -115,7 +115,7 @@ resource "null_resource" "Jenkins_provisioner" {
 
     inline = [ 
       "while [ ! -f /tmp/cloud-init-complete ]; do sleep 1; done",
-      "docker run -v opc_jenkins_home:/var/jenkins_home -v opc_jenkinsRef:/usr/share/jenkins/ref -v /home/opc/casc.yaml:/jenkins/config/casc.yaml -e JENKINS_ADMIN_ID=${var.jenkins_user} -e JENKINS_ADMIN_PASSWORD=${var.jenkins_password}  -e CASC_JENKINS_CONFIG=/jenkins/config/casc.yaml --entrypoint /usr/local/bin/install-plugins.sh jenkins/jenkins:lts git matrix-auth workflow-aggregator blueocean credentials-binding configuration-as-code" 
+      "docker run -v opc_jenkins_home:/var/jenkins_home -v opc_jenkinsRef:/usr/share/jenkins/ref -v /home/opc/casc.yaml:/jenkins/config/casc.yaml -e JENKINS_ADMIN_ID=${var.jenkins_user} -e JENKINS_ADMIN_PASSWORD=${var.jenkins_password}  -e CASC_JENKINS_CONFIG=/jenkins/config/casc.yaml --entrypoint /usr/local/bin/install-plugins.sh jenkins4eval/jenkins:latest git matrix-auth workflow-aggregator blueocean credentials-binding configuration-as-code" 
       ]
 
 
@@ -145,6 +145,6 @@ resource "null_resource" "Jenkins_provisioner" {
 locals {
   availability_domain_name   = var.availability_domain_name != null ? var.availability_domain_name : data.oci_identity_availability_domains.ADs.availability_domains[0].name
   instance_shape             = var.instance_shape
-  compute_flexible_shapes    = ["VM.Standard.E3.Flex","VM.Standard.E4.Flex"]
+  compute_flexible_shapes    = ["VM.Standard.A1.Flex","VM.Standard.E3.Flex","VM.Standard.E4.Flex"]
   is_flexible_instance_shape = contains(local.compute_flexible_shapes, local.instance_shape)
 }
